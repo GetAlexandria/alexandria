@@ -3,6 +3,26 @@
 All notable changes to Alexandria are documented in this file.
 Format follows [Keep a Changelog](https://keepachangelog.com/).
 
+## [0.9.0] — 2026-04-17
+
+### Added
+- Hard cut-over to the new Alexandria release topology: `GetAlexandria/alexandria-internal`,
+  `GetAlexandria/alexandria`, and `getalexandria.ai`
+- Public payload sync from the internal repo into the public repo
+- Public issue templates and issue-only public repo surface
+- Release build scripts for public plugin payloads, `ax` binaries, and site download publishing
+- Release QA harness for staged plugin/binary artifact verification
+
+### Changed
+- `ax` is now the canonical public CLI surface
+- Public install no longer depends on shipped source or Bun after installation
+- Product agents and skills now call `ax` instead of the old `alxndr` / standalone product command mix
+- Installer and marketplace metadata now point at the GetAlexandria org/domain structure
+
+### Notes
+- Release evals are not auto-run in the release workflow; they remain a human release gate based on prior feature coverage
+- The legacy `sociotechnica-org/alexandria` repo now carries a cut-over notice to the new surfaces
+
 ## [0.8.4] — 2026-04-08
 
 ### Fixed
