@@ -3,6 +3,20 @@
 All notable changes to Alexandria are documented in this file.
 Format follows [Keep a Changelog](https://keepachangelog.com/).
 
+## [0.9.2] — 2026-04-20
+
+### Fixed
+- Release downloads no longer go through Cloudflare Pages, avoiding the 25 MiB
+  asset limit that blocked `0.9.1` site deployment
+- The release workflow now installs Bun before publishing download artifacts to
+  R2
+
+### Changed
+- Alexandria release tarballs now publish to `downloads.getalexandria.ai`
+  through Cloudflare R2
+- The Alexandria site release step now publishes only `install.sh`,
+  `latest-version.txt`, and changelog/version metadata to the site repo
+
 ## [0.9.1] — 2026-04-20
 
 ### Fixed
