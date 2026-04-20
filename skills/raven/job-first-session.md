@@ -31,7 +31,7 @@ The `/library` skill invoked Raven and
 - The human's current library goal
 - The visible project root and any `docs/alexandria/` state already on disk
 - The checked-in initialize reference files under `${CLAUDE_PLUGIN_ROOT}/skills/initialize/`
-- The shipped CLIs under `${CLAUDE_PLUGIN_ROOT}/bin/` when Bash is available
+- The installed `ax` CLI when Bash is available
 
 ## Procedure
 

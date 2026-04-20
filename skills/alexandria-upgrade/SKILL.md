@@ -85,7 +85,7 @@ Upgrade path: manual update or copy from a global git install.
 
 1. Check if a global git install exists:
    - `~/.claude/plugins/alexandria/.git`
-   - `~/.claude/plugins/context-library/.git` (legacy alias)
+   - `~/.claude/plugins/alexandria/.git`
 
 2. If a global install exists:
    - Upgrade the global install first (git pull)
