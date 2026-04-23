@@ -3,6 +3,16 @@
 All notable changes to Alexandria are documented in this file.
 Format follows [Keep a Changelog](https://keepachangelog.com/).
 
+## [0.9.4] — 2026-04-23
+
+### Added
+- New public `ax update` command for in-place Alexandria upgrades that refresh both the plugin payload and the installed `ax` binary
+
+### Fixed
+- `ax update-check` no longer caches stale `up_to_date` results, so freshly shipped releases show up immediately
+- Upgrade docs and the bundled upgrade skill now describe the real supported in-place update path instead of sending users through setup-only or manual flows
+- Shared release-install logic now hardens plugin/binary replacement during setup and update flows
+
 ## [0.9.3] — 2026-04-22
 
 ### Fixed

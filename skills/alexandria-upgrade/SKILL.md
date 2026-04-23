@@ -14,7 +14,7 @@ requires:
 
 # Alexandria Upgrade
 
-Upgrade Alexandria to the latest version from GitHub.
+Upgrade Alexandria to the latest installed release.
 
 ## When to Use
 
@@ -39,7 +39,23 @@ show it to the user.
 
 If already up to date, tell the user and stop.
 
-### Step 2: Detect Install Type
+### Step 2: Use the Public CLI Upgrade Path
+
+If `ax update` is available, treat it as the canonical in-place upgrade path.
+
+1. Ask the user for permission if the session requires confirmation.
+2. Run:
+   ```
+   ax update
+   ```
+   Or, when the user has already approved a non-interactive run:
+   ```
+   ax update --yes
+   ```
+3. If `ax update` succeeds, move to verification.
+4. If `ax update` is unavailable or fails before installing, fall back to install-type diagnosis below.
+
+### Step 3: Detect Install Type (Fallback)
 
 Check how Alexandria was installed:
 
@@ -55,7 +71,7 @@ Alexandria was vendored (copied) into this project.
 Upgrade path: manual update or copy from a global git install.
 ```
 
-### Step 3: Perform Upgrade
+### Step 4: Perform Fallback Upgrade
 
 **For git installs:**
 
@@ -100,7 +116,7 @@ Upgrade path: manual update or copy from a global git install.
    3. Verify with: cat [vendored path]/VERSION
    ```
 
-### Step 4: Verify
+### Step 5: Verify
 
 After upgrade:
 
