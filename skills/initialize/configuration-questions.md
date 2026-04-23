@@ -38,6 +38,13 @@ question, clarify and let them re-answer. Never silently override.
 conversation and written output: `No/Low AI`, `Short-Order Cook`, `Pair Programmer`,
 `Factory`. Do not invent aliases or carry forward retired shorthand.
 
+**Two-axis rule:** These mode labels describe **product-decision autonomy** only.
+They do **not** describe whether the team has autonomous build infrastructure.
+If the user mentions a software factory, autonomous execution, queued builders, or
+similar implementation automation, ask and record that as a separate
+**build-pipeline autonomy** note. Do not let build automation drag the mode upward
+on its own.
+
 ---
 
 ## Question 1: AI Mode (Guidance posture: Prescriptive)
@@ -63,6 +70,11 @@ still be `no_low_ai` or `short_order_cook` if a human makes the product decision
 does not choose what to build. Factory mode requires autonomous product micro-decisions,
 not just AI-assisted implementation.
 
+**Do not collapse "autonomous software factory" into Factory mode either.** A team can
+have autonomous implementation infrastructure and still be `Pair Programmer` or
+`Short-Order Cook` if a human still makes the product calls. Capture the build
+infrastructure separately; keep the mode tied to product-decision authority.
+
 **When the evidence sounds human-led, force the autonomy check.** If the user says things
 like "a product person decides," "builders follow specs," "AI helps but doesn't decide,"
 or equivalent, ask the direct disambiguator before settling on the mode:
@@ -71,6 +83,31 @@ or equivalent, ask the direct disambiguator before settling on the mode:
 > its own, or does a product person still make that call?
 
 If the product person still makes the call, the answer is not Factory mode.
+
+**Companion capture: build-pipeline autonomy**
+
+When the user mentions autonomous implementation, queued builders, CI-driven coding,
+or "software factory" language, ask the orthogonal follow-up after Q1 is settled:
+
+> Separate from product decisions: how does implementation actually run today?
+> Is it mostly human-driven, human-triggered AI execution, or an autonomous build
+> pipeline that can pick up and execute work on its own?
+
+Record one of these values for the initialize artifacts:
+
+| Value | Meaning |
+|------|---------|
+| `manual` | Humans do the implementation work directly. |
+| `human_triggered` | A human kicks off each task, then AI executes the implementation work. |
+| `autonomous_execution` | AI infrastructure can pick up and execute implementation work on its own. |
+
+This companion note does **not** change the engine mode. It is context that helps the
+human understand why a team can legitimately be `Pair Programmer` on product decisions
+while still running an autonomous software factory for execution.
+
+If this companion question never surfaced because the user gave no automation signal,
+omit the build-pipeline note from the initialize artifacts rather than fabricating a
+default answer.
 
 If signals are absent or ambiguous, present Q1 with its WHY:
 

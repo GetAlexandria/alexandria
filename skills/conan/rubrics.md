@@ -87,9 +87,24 @@ Binary pass/fail — structural readiness only.
 | PASS (A) | Section exists. Temporal status marked. Known predecessors acknowledged. |
 | FAIL (F) | Section missing OR ignores known predecessors.                           |
 
+## Type Audit
+
+Run the Type Decision Tree from `reference.md` before section grading.
+
+- If the tree yields a clear verdict that disagrees with the card's declared type,
+  stop card-level grading for that card.
+- Emit `AUDIT SIGNAL: declared [Type] but the concept routes to [Expected Type]`.
+- Mark the card `UNGRADED — RETYPE REQUIRED`.
+- Recommend the correct type before continuing the broader report.
+
+If the tree is genuinely ambiguous because the current taxonomy does not cleanly
+cover the concept, note that ambiguity explicitly and continue with grading.
+
 ## Misclassification Signals
 
-Flag during grading, don't halt. Complete grade + note AUDIT SIGNAL.
+Use these signals to support the Type Audit and to catch softer cases where the
+tree is not fully decisive. These are non-blocking unless they reinforce a clear
+Type Decision Tree mismatch.
 
 | Signal                                                              | Suggests               |
 | ------------------------------------------------------------------- | ---------------------- |

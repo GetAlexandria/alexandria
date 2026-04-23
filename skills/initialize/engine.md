@@ -10,6 +10,10 @@ requires:
 
 This file contains the complete algorithm for computing tier assignments from initialize inputs.
 All data tables are in `${CLAUDE_PLUGIN_ROOT}/docs/initialize/initialize-engine.yaml`.
+The executable source of truth for the deterministic portions of this engine lives in
+the Alexandria CLI (`ax initialize`) and the checked-in TypeScript initialize engine.
+When `ax` is available, prefer that execution path. Use this document as the exact
+fallback mirror when shelling out is unavailable.
 
 ## Inputs
 
@@ -176,6 +180,9 @@ Edge cases:
 This section contains the algorithm for scoring knowledge gaps and producing a seeding sequence.
 It runs after the tier assignment algorithm above, taking the initialize output plus a knowledge
 declaration as inputs.
+
+The deterministic scoring logic here is also mirrored by the checked-in TypeScript initialize
+engine. Keep this prose aligned with the executable implementation.
 
 ## Inputs
 

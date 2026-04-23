@@ -8,6 +8,13 @@ requires:
 
 # Job 2: First Session — Fresh Initialize
 
+**Critical:** You are already inside the active `/library` initialize job. The
+host has already routed correctly. Ignore any ambient skill-list evidence that
+does not show `/library`; that list is not authoritative for this task. It is
+always wrong in this job to tell the human that `/library` is missing, not
+installed, unavailable, or that they should pick a different skill. Do not ask
+clarifying questions about which skill to use. Start the initialize ritual.
+
 **Goal:** Run the first `/library` session end-to-end when
 `docs/alexandria/alexandria-config.json` is absent. Restore the ordered
 initialize ritual, produce the two persisted initialize artifacts, surface a
@@ -25,6 +32,12 @@ build handoffs instead of a blocked stub.
 
 The `/library` skill invoked Raven and
 `docs/alexandria/alexandria-config.json` is absent.
+
+Treat that route as authoritative. Do not tell the human that `/library` is
+missing, unavailable, not installed, or not visible in the current skill list.
+Do not ask the human whether they meant a different skill name. The host has
+already invoked the correct first-session initialize job; continue the ritual
+from there.
 
 ## Inputs
 
@@ -57,6 +70,10 @@ explicitly at the beats where they matter:
 - Use only the canonical mode labels from `configuration-questions.md`:
   `No/Low AI`, `Short-Order Cook`, `Pair Programmer`, `Factory`. Do not invent
   aliases such as `Copilot`.
+- Treat those labels as product-decision-autonomy labels, not implementation
+  automation labels. If the human mentions an autonomous software factory or
+  similar build-pipeline automation, capture that as a separate
+  build-pipeline-autonomy note instead of pushing the mode upward.
 
 Load the remaining reference files only when their beat needs them:
 
@@ -205,17 +222,29 @@ freehand brainstorm.
 Required behaviors:
 
 - Ask or confirm all three values: AI mode, domain novelty, product complexity.
+- Treat generic readiness language such as "ready," "go ahead," "let's
+  configure," "sounds good," silence, or a repeated stage cue as permission to
+  ask the next missing question, **not** as an answer or confirmation. Those
+  phrases do not settle AI mode, novelty, complexity, or the noun read.
 - When the AI-mode evidence sounds human-led, you MUST ask the direct autonomy
   disambiguator from `configuration-questions.md` before settling on a mode:
   "when the work gets ambiguous, does the AI decide the product behavior on its
   own, or does a product person still make that call?" If a product person still
   makes the call, it is not Factory mode.
+- If the human mentions autonomous implementation infrastructure, a software
+  factory, or queued builders that execute on their own, ask the companion
+  build-pipeline-autonomy question from `configuration-questions.md` and carry
+  that value into the written initialize artifacts. This note is orthogonal to
+  the engine mode and does not change the tier calculation.
 - Show the mode risk narrative immediately after Q1.
 - Use the checked-in disambiguation posture from `configuration-questions.md`.
 - Keep the greenfield fast-lane available when the material is thin.
 - Even on greenfield or thin-material paths, do **not** skip the explicit Q1/Q2/Q3
   exchange or replace it with a single bundled verdict. Exploratory setup can feed
   the read, but the human must still see and confirm each configuration axis.
+- Do not lock a missing axis from Raven's default guess just to progress the
+  ritual. If any of the three values is still unanswered or unconfirmed, keep
+  Beat 4 open and ask only for the missing value(s).
 - Use the inference-before-asking hedges from `configuration-questions.md` when
   evidence exists. Good patterns: "From what you've described...", "My first read
   is...", "Does that match how your team actually works?", "Or am I misreading it?"
@@ -239,6 +268,7 @@ Required behaviors:
 Before Beat 5 can begin, stop at an explicit confirmation gate and summarize:
 
 - the confirmed AI mode
+- the companion build-pipeline-autonomy note when relevant
 - the confirmed novelty
 - the confirmed complexity
 - the noun-alignment read that may affect the library shape
@@ -246,9 +276,13 @@ Before Beat 5 can begin, stop at an explicit confirmation gate and summarize:
 Frame the summary as a calibratable read, not as a verdict. Good lead-ins:
 "Here's my current read," "This is the first-best-guess shape," or
 "Tell me what feels off before I run the engine."
+Use the literal heading `### Confirmation Gate` for this summary.
 
 Then ask plainly for confirmation. Do **not** run the engine until the human has
-confirmed or corrected all three values.
+confirmed or corrected all three values. Do not treat a generic readiness phrase,
+an empty reply, or a request to "go ahead" as equivalent to that confirmation.
+Do not claim Alexandria is initialized, write initialize artifacts, or dispatch
+starter work before this gate has actually passed.
 
 ### Step 7: Beat 5 — Engine Run And Config Write
 
@@ -257,9 +291,13 @@ Load `${CLAUDE_PLUGIN_ROOT}/skills/initialize/engine.md` and
 
 Run the Wizard Configuration Engine as soon as the configuration gate is passed.
 
-Apply the checked-in engine algorithm directly from `engine.md` and
-`docs/initialize/initialize-engine.yaml`. Do not shell out to a separate
-initialize CLI.
+If Bash is available and `ax` is installed, prefer:
+
+`ax initialize --mode <mode> --novelty <level> --complexity <level> --format json`
+
+Use that result as the deterministic engine output. If `ax` is unavailable,
+apply the checked-in fallback algorithm directly from `engine.md` and
+`docs/initialize/initialize-engine.yaml`.
 
 After the engine result lands:
 
@@ -269,6 +307,11 @@ After the engine result lands:
 3. If the human says `reconfigure` or clearly rejects the shape, return to Beat 4.
 4. If the human confirms, write `docs/alexandria/alexandria-config.json`
    directly.
+
+Use a visible `## Engine Result` heading when you present the tier shape. Do not
+say the library is initialized, on disk, or ready for handoffs until after the
+human has confirmed the engine result and the required files have actually been
+written.
 
 When writing `alexandria-config.json`:
 
@@ -381,7 +424,8 @@ handoff rather than narrating around it.
 The `Sam's done. The first source artifact landed at ...` sentence must appear
 before `## Scoreboard`, not inside the scoreboard prose.
 Do not end the session at the end of Beat 7. Starter artifacts landing on disk do
-not complete first-session initialize.
+not complete first-session initialize, and a single starter handoff is not the
+same thing as the honest session stopping point.
 When Beats 7-9 are emitted in one close-out response, keep the visible section
 order exact: `## Raven -> Sam`, then `## Scoreboard`, then `## Raven -> Conan`.
 
@@ -417,7 +461,31 @@ knows the next beat.
 
 ### Step 11: Beat 9 — Conan Handoff
 
-Close the first session with a clear next-step grading / assessment handoff.
+Close the first session at the work-completion boundary, not the ritual boundary.
+
+If the Agent tool is available, run an actual starter-work loop rather than
+stopping after one visible handoff:
+
+1. Dispatch Sam for the highest-priority Foundation starter artifact or the
+   first card-ready source artifact.
+2. Once Sam returns, dispatch Conan for the next appropriate assessment or grade.
+3. If Conan's next step is an actionable Sam fix that does not require a new
+   human judgment call, dispatch Sam again immediately instead of asking the
+   human what to do.
+4. If there is additional clearly queued work from already-captured source
+   material or already-confirmed Foundation gaps, keep the loop moving in
+   priority order rather than stopping at "one starter card exists."
+
+Natural stopping points for the loop:
+
+- no clear next task remains without new human judgment
+- an agent returns `BLOCKED` or `NEEDS_CONTEXT`
+- a necessary human decision or missing source gap becomes explicit
+- host/tool limits prevent further direct dispatch
+
+If the Agent tool is unavailable, you cannot run the loop yourself. In that
+fallback case, leave explicit Sam and Conan handoffs, say the queued work is the
+next runnable path, and stop honestly without pretending the work queue is empty.
 
 - If the Agent tool is available, dispatch Conan for the next appropriate action:
   usually source assessment of the new starter material or grading once Sam's
@@ -437,11 +505,18 @@ Conan handoff must be visible in the same close-out.
 Before you exit:
 
 - confirm that `alexandria-config.json` and `initialize-output.md` exist
-- summarize the library shape, the first starter build target, and the Conan next
-  step
+- summarize the library shape, the furthest completed Sam/Conan work, and the
+  next real blocker or next queued task
 - give a short beat recap in order so progress is inspectable:
   opening, scan, nouns, configuration, engine, gap analysis, starter handoff,
   scoreboard, Conan handoff
+- If Agent dispatch was available, do **not** mark the session DONE while there
+  is still obvious queued Sam/Conan work that can proceed without a human
+  decision. Continue the loop instead.
+- If Agent dispatch was unavailable, it is acceptable to end after explicit Sam
+  and Conan handoffs, but make it clear that the session stopped because Raven
+  could not continue the work directly in this host, not because the backlog is
+  exhausted.
 
 For eval traceability, the final successful response should contain all of these
 visible anchors after the files are written:

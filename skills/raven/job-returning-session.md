@@ -34,6 +34,23 @@ The `/library` skill invoked Raven and
 - Git history, when available, for drift and merged-ticket checks
 - The shipped `ax scoreboard` CLI when Bash is available
 
+## Output Contract
+
+Prefer a four-part room-open structure in this order:
+
+1. `## Scoreboard`
+2. `## Drift Since Last Initialize`
+3. `## Completed Plans`
+4. `## Room Open`
+
+Semantically equivalent headings are acceptable when the room-open shape remains
+clear. For example, `## Library state`, `## What changed since init`, or
+`## Most important next move` are acceptable substitutes when they still map
+cleanly onto scoreboard, drift, and top-1-nudge intent.
+
+Prefer ending with a visible status marker such as `**Status: DONE**`, but do
+not contort an otherwise honest room-open just to force the status line.
+
 ## Procedure
 
 ### Step 1: Load Calibration And Read Current State
@@ -76,6 +93,9 @@ If Bash is unavailable or the command fails:
 - do **not** invent percentages, bars, or fill levels you cannot justify from
   disk
 
+Prefer `## Scoreboard` for this section, but a semantically equivalent heading
+is acceptable if the output still clearly functions as the scoreboard/state read.
+
 ### Step 3: Detect Repo Drift Via Git Log
 
 This replaces the old directory-heuristic transition logic. Do not use `src/`,
@@ -103,6 +123,9 @@ Rules:
 - If git or the config timestamp is unavailable, say the drift check is
   unavailable rather than inventing a delta.
 
+Prefer `## Drift Since Last Initialize`, but a semantically equivalent heading
+is acceptable if the drift read remains explicit and concrete.
+
 ### Step 4: Check For Completed-Plan Nudges
 
 Look for implementation plans that are still marked `status: planning` but show
@@ -126,6 +149,9 @@ Emit a visible `## Completed Plans` section:
 - If none stand out, say no plan-closeout nudge is evident from local state.
 - If git or the config timestamp is unavailable, say the check is limited.
 
+Prefer a dedicated `## Completed Plans` section, but a semantically equivalent
+heading is acceptable if the closeout nudge remains explicit.
+
 ### Step 5: Deliver The Concierge Opening
 
 After the state reads land, emit a visible `## Room Open` section with exactly
@@ -139,13 +165,18 @@ three moves:
    redirect the room.
 
 Keep this short. The returning-session opener is orientation, not a second
-initialize report.
+initialize report. Prefer `## Room Open`, but a semantically equivalent heading
+is acceptable if the state read, top-1 nudge, and invitation remain distinct.
 
 ### Step 6: Dispatch From The Human's Next Move
 
 If the human already named the next move in the opening request, route there in
 the same response. Otherwise, stop after the concierge opening and wait for the
 human's answer.
+
+Important: a user asking for "the most important next move" is **not** permission
+to skip the room-open orientation. You still must show the reconstructed state,
+drift, and completed-plan evidence before naming the top-1 nudge.
 
 Routing rules:
 
@@ -159,8 +190,36 @@ Routing rules:
   replaying the room-open sequence.
 
 Keep the visible section order stable when all beats appear in one response:
-`## Scoreboard`, then `## Drift Since Last Initialize`, then
-`## Completed Plans`, then `## Room Open`.
+scoreboard/state read, then drift, then completed-plan nudge, then room open.
+Do not prepend a long substitute overview ahead of that sequence. If you want a
+one-line orienting sentence, put it under the final room-open section rather
+than ahead of the state reconstruction.
+
+Use this scaffold as the preferred response shape. Fill each section with the
+real evidence you observed; if a check is unavailable, say so inside the section
+rather than omitting it.
+
+```md
+## Scoreboard
+[Rendered scoreboard or honest fallback grounded in config + library files.]
+
+## Drift Since Last Initialize
+- [Concrete changed path or "No repo changes detected since ..."]
+- [2-6 more concrete drift bullets as needed]
+
+## Completed Plans
+- [Top closeout signal, or "No plan-closeout nudge is evident from local state."]
+
+## Room Open
+State read: [one sentence]
+Top-1 nudge: [one sentence]
+Open invitation: [one sentence]
+
+**Status: DONE**
+```
+
+Do not collapse this scaffold into one sentence, even when the top-1 nudge is
+obvious. A response that omits the visible section shape entirely is incomplete.
 
 Before you stop, end the response with one visible status marker exactly in this
 format:

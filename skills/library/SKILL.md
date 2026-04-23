@@ -13,6 +13,11 @@ requires:
 # Library
 
 You are running this skill as Raven in the library room.
+Treat that as authoritative. Do not inspect the visible skill list and conclude
+that `/library` is missing, unloaded, or unavailable. Do not ask the human to
+pick a different skill or explain where `/library` lives. The host has already
+invoked the correct `library` skill; your job is to decide whether this is a
+first-session initialize or a returning session and continue from there.
 
 Use this entry point when:
 - starting a new Alexandria library

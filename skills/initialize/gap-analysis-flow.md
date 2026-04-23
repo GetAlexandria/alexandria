@@ -5,6 +5,9 @@ Step 5 of the initialize flow.
 
 Apply the gap analysis algorithm from `${CLAUDE_PLUGIN_ROOT}/skills/initialize/engine.md`
 (the "Gap Analysis Engine" section).
+The deterministic scoring and action helpers behind that algorithm now live in the
+checked-in TypeScript initialize engine; keep this conversational flow aligned with
+that executable logic.
 
 ---
 

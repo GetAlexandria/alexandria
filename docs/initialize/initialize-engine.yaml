@@ -536,7 +536,7 @@ questions:
   - id: "ai_mode"
     order: 1
     question: "How much product decision authority do your AI builders have?"
-    determines: "Knowledge pool ceiling — which areas are relevant for your team"
+    determines: "Knowledge pool ceiling — which areas are relevant for your team based on product-decision autonomy, not build-pipeline automation"
     options:
       - value: "no_low_ai"
         label: "No/Low AI"
