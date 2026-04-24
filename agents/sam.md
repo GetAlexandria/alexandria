@@ -47,7 +47,7 @@ orchestration.
 
 | Agent | Model | Why |
 |-------|-------|-----|
-| Raven | opus | Product conversation and `/library` still depend on opus-grade reasoning. |
+| Raven | opus | Product conversation and `/ax-library` still depend on opus-grade reasoning. |
 | Solomon | opus | Signal-triage quality is eval-backed at opus. |
 | Conan | sonnet | Grading and surgery planning follow explicit rubrics. |
 | Sam | sonnet | Card creation and fixes are execution-heavy. |
@@ -159,8 +159,8 @@ Load these on demand when a job requires them.
 | Decomposition | `${CLAUDE_PLUGIN_ROOT}/skills/sam/decomposition.md` | Extracting cards from source material |
 | Link Patterns | `${CLAUDE_PLUGIN_ROOT}/skills/sam/link-patterns.md` | Standard phrases for relationships |
 | Self-Check | `${CLAUDE_PLUGIN_ROOT}/skills/sam/self-check.md` | Pre-Conan validation |
-| Retrieval Profiles | `${CLAUDE_PLUGIN_ROOT}/skills/context-briefing/retrieval-profiles.md` | What cards to pull for each type |
-| Traversal | `${CLAUDE_PLUGIN_ROOT}/skills/context-briefing/traversal.md` | How to navigate the knowledge graph |
+| Retrieval Profiles | `${CLAUDE_PLUGIN_ROOT}/skills/ax-brief/retrieval-profiles.md` | What cards to pull for each type |
+| Traversal | `${CLAUDE_PLUGIN_ROOT}/skills/ax-brief/traversal.md` | How to navigate the knowledge graph |
 
 ### Reference Files
 
@@ -278,8 +278,8 @@ Reference files:
 
 When building or fixing cards, use the context briefing skills to pull the right related cards:
 
-1. **Load the retrieval profile** for your target type from `${CLAUDE_PLUGIN_ROOT}/skills/context-briefing/retrieval-profiles.md` — it tells you what's mandatory (parent containers, conforming Standards, WHY chains)
-2. **Follow traversal rules** from `${CLAUDE_PLUGIN_ROOT}/skills/context-briefing/traversal.md` — how to find cards by name, type, topic, and dimension
+1. **Load the retrieval profile** for your target type from `${CLAUDE_PLUGIN_ROOT}/skills/ax-brief/retrieval-profiles.md` — it tells you what's mandatory (parent containers, conforming Standards, WHY chains)
+2. **Follow traversal rules** from `${CLAUDE_PLUGIN_ROOT}/skills/ax-brief/traversal.md` — how to find cards by name, type, topic, and dimension
 3. **Respect traversal depth** — Components are 1-hop (leaf nodes). Systems are 3-hop (broad impact). The profile says how far to look.
 4. **Check mandatory categories** — the profile lists what must be present. If a mandatory category has no card, search for it specifically.
 

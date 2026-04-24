@@ -8,7 +8,7 @@ requires:
 
 # Job 3: Returning Session — Room Open
 
-**Goal:** Open `/library` as a real returning room when
+**Goal:** Open `/ax-library` as a real returning room when
 `docs/alexandria/alexandria-config.json` is present. Reconstruct current
 library state from disk, render the live scoreboard, surface repo drift since
 the library was initialized, check for plan-closeout nudges, and hand the room
@@ -22,7 +22,7 @@ back to the human with one clear next move.
 
 ## Trigger
 
-The `/library` skill invoked Raven and
+The `/ax-library` skill invoked Raven and
 `docs/alexandria/alexandria-config.json` is present.
 
 ## Inputs
@@ -142,7 +142,7 @@ Use a lightweight local check only:
 
 Emit a visible `## Completed Plans` section:
 
-- If one plan clearly stands out, name it explicitly and prepare `/complete-plan`
+- If one plan clearly stands out, name it explicitly and prepare `/ax-complete-plan`
   as the top-1 nudge.
 - If multiple plans show activity, name the short list and prefer the strongest
   candidate only.
@@ -158,7 +158,7 @@ After the state reads land, emit a visible `## Room Open` section with exactly
 three moves:
 
 1. **State read:** one sentence on where the library stands right now.
-2. **Top-1 nudge:** one sentence on the best next move. Prefer `/complete-plan`
+2. **Top-1 nudge:** one sentence on the best next move. Prefer `/ax-complete-plan`
    when Step 4 found a strong candidate; otherwise prefer the most important
    repo/library drift surfaced in Step 3.
 3. **Open invitation:** one sentence inviting the human to confirm that nudge or
@@ -182,10 +182,10 @@ Routing rules:
 
 - If the human wants product thinking, continue in Raven's Product Conversation
   job.
-- If the human wants library follow-up or gap work, continue the `/library` room
+- If the human wants library follow-up or gap work, continue the `/ax-library` room
   from the current state you already reconstructed.
-- If the human accepts a strong closeout nudge, route to `/complete-plan` or say
-  plainly that `/complete-plan` is the next skill to run.
+- If the human accepts a strong closeout nudge, route to `/ax-complete-plan` or say
+  plainly that `/ax-complete-plan` is the next skill to run.
 - If the human's ask is unclear, ask one short clarifying question rather than
   replaying the room-open sequence.
 

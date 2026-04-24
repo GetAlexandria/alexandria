@@ -45,9 +45,9 @@ Files that mirror library structure and must stay in sync with `docs/alexandria/
 
 | File                                                    | Sync Points                                                                                            |
 | ------------------------------------------------------- | ------------------------------------------------------------------------------------------------------ |
-| `${CLAUDE_PLUGIN_ROOT}/skills/context-briefing/retrieval-profiles.md` | One profile per type, example card names (must match actual cards), mandatory categories summary table |
-| `${CLAUDE_PLUGIN_ROOT}/skills/context-briefing/traversal.md`          | Folder path examples in "Finding Cards" section                                                        |
-| `${CLAUDE_PLUGIN_ROOT}/skills/context-briefing/protocol.md`           | Relationship types, target type mentions                                                               |
+| `${CLAUDE_PLUGIN_ROOT}/skills/ax-brief/retrieval-profiles.md` | One profile per type, example card names (must match actual cards), mandatory categories summary table |
+| `${CLAUDE_PLUGIN_ROOT}/skills/ax-brief/traversal.md`          | Folder path examples in "Finding Cards" section                                                        |
+| `${CLAUDE_PLUGIN_ROOT}/skills/ax-brief/protocol.md`           | Relationship types, target type mentions                                                               |
 
 ### Skill Files — Conan
 

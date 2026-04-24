@@ -73,7 +73,7 @@ The public CLI includes:
 After installation, open the library room:
 
 ```text
-Run /library to configure a context library for this project
+Run /ax-library to configure a context library for this project
 ```
 
 Raven handles the library room. On a first visit, she initializes the library.

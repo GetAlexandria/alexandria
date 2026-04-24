@@ -65,7 +65,7 @@ orchestration.
 
 | Agent | Model | Why |
 |-------|-------|-----|
-| Raven | opus | Product conversation and `/library` still depend on opus-grade reasoning. |
+| Raven | opus | Product conversation and `/ax-library` still depend on opus-grade reasoning. |
 | Solomon | opus | Signal-triage quality is eval-backed at opus. |
 | Conan | sonnet | Grading and surgery planning follow explicit rubrics. |
 | Sam | sonnet | Card creation and fixes are execution-heavy. |

@@ -34,7 +34,7 @@ NEEDS_CONTEXT).
 
 | # | Job | File | When |
 |---|-----|------|------|
-| 1 | Context Briefing Assembly | `${CLAUDE_PLUGIN_ROOT}/skills/context-briefing/SKILL.md` | Starting a feature, fixing a bug, or making a change that touches product concepts |
+| 1 | Context Briefing Assembly | `${CLAUDE_PLUGIN_ROOT}/skills/ax-brief/SKILL.md` | Starting a feature, fixing a bug, or making a change that touches product concepts |
 
 ## Shared Conventions
 
@@ -61,7 +61,7 @@ orchestration.
 
 | Agent | Model | Why |
 |-------|-------|-----|
-| Raven | opus | Product conversation and `/library` still depend on opus-grade reasoning. |
+| Raven | opus | Product conversation and `/ax-library` still depend on opus-grade reasoning. |
 | Solomon | opus | Signal-triage quality is eval-backed at opus. |
 | Conan | sonnet | Grading and surgery planning follow explicit rubrics. |
 | Sam | sonnet | Card creation and fixes are execution-heavy. |
@@ -73,13 +73,13 @@ Load these on demand during assembly.
 
 | Skill | File | When to Load |
 |-------|------|--------------|
-| Protocol | `${CLAUDE_PLUGIN_ROOT}/skills/context-briefing/protocol.md` | Briefing contract, format, card budgets, attention ordering, CLI-first retrieval flow |
-| Retrieval Profiles | `${CLAUDE_PLUGIN_ROOT}/skills/context-briefing/retrieval-profiles.md` | Type-specific mandatory categories, traversal depth, and dimension priority |
-| Traversal | `${CLAUDE_PLUGIN_ROOT}/skills/context-briefing/traversal.md` | Manual graph navigation when seed discovery or fallback traversal is needed |
-| Task Modifiers | `${CLAUDE_PLUGIN_ROOT}/skills/context-briefing/task-modifiers.md` | How task type changes emphasis during assembly |
-| Feedback Queue | `${CLAUDE_PLUGIN_ROOT}/skills/context-briefing/feedback-queue-schema.md` | Markdown schema for logging library gaps and follow-up actions |
-| Provenance | `${CLAUDE_PLUGIN_ROOT}/skills/context-briefing/provenance-schema.md` | Markdown schema for logging retrieval choices and assembly reasoning |
-| Overview | `${CLAUDE_PLUGIN_ROOT}/skills/context-briefing/SKILL.md` | Library orientation, card anatomy, graph navigation |
+| Protocol | `${CLAUDE_PLUGIN_ROOT}/skills/ax-brief/protocol.md` | Briefing contract, format, card budgets, attention ordering, CLI-first retrieval flow |
+| Retrieval Profiles | `${CLAUDE_PLUGIN_ROOT}/skills/ax-brief/retrieval-profiles.md` | Type-specific mandatory categories, traversal depth, and dimension priority |
+| Traversal | `${CLAUDE_PLUGIN_ROOT}/skills/ax-brief/traversal.md` | Manual graph navigation when seed discovery or fallback traversal is needed |
+| Task Modifiers | `${CLAUDE_PLUGIN_ROOT}/skills/ax-brief/task-modifiers.md` | How task type changes emphasis during assembly |
+| Feedback Queue | `${CLAUDE_PLUGIN_ROOT}/skills/ax-brief/feedback-queue-schema.md` | Markdown schema for logging library gaps and follow-up actions |
+| Provenance | `${CLAUDE_PLUGIN_ROOT}/skills/ax-brief/provenance-schema.md` | Markdown schema for logging retrieval choices and assembly reasoning |
+| Overview | `${CLAUDE_PLUGIN_ROOT}/skills/ax-brief/SKILL.md` | Library orientation, card anatomy, graph navigation |
 
 ## Workflow
 

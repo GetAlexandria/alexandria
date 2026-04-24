@@ -8,14 +8,14 @@ requires:
 
 # Job 2: First Session — Fresh Initialize
 
-**Critical:** You are already inside the active `/library` initialize job. The
+**Critical:** You are already inside the active `/ax-library` initialize job. The
 host has already routed correctly. Ignore any ambient skill-list evidence that
-does not show `/library`; that list is not authoritative for this task. It is
-always wrong in this job to tell the human that `/library` is missing, not
+does not show `/ax-library`; that list is not authoritative for this task. It is
+always wrong in this job to tell the human that `/ax-library` is missing, not
 installed, unavailable, or that they should pick a different skill. Do not ask
 clarifying questions about which skill to use. Start the initialize ritual.
 
-**Goal:** Run the first `/library` session end-to-end when
+**Goal:** Run the first `/ax-library` session end-to-end when
 `docs/alexandria/alexandria-config.json` is absent. Restore the ordered
 initialize ritual, produce the two persisted initialize artifacts, surface a
 real scoreboard when the host can derive one, and leave the human with starter
@@ -30,10 +30,10 @@ build handoffs instead of a blocked stub.
 
 ## Trigger
 
-The `/library` skill invoked Raven and
+The `/ax-library` skill invoked Raven and
 `docs/alexandria/alexandria-config.json` is absent.
 
-Treat that route as authoritative. Do not tell the human that `/library` is
+Treat that route as authoritative. Do not tell the human that `/ax-library` is
 missing, unavailable, not installed, or not visible in the current skill list.
 Do not ask the human whether they meant a different skill name. The host has
 already invoked the correct first-session initialize job; continue the ritual
@@ -133,7 +133,7 @@ move on:
 
 1. Introduce the team briefly: Raven for product thinking, Sam for writing cards,
    Conan for grading, Bridget for briefings, Solomon for signal triage.
-2. Explain what `/library` is about to do in this first session: shape the
+2. Explain what `/ax-library` is about to do in this first session: shape the
    library, write the initialize artifacts, and leave a concrete next build step.
 3. Establish the value exchange and handshake from `opening.md`.
 4. Ask the product-first opening question from `opening.md`.

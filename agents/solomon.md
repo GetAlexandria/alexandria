@@ -67,7 +67,7 @@ orchestration.
 
 | Agent | Model | Why |
 |-------|-------|-----|
-| Raven | opus | Product conversation and `/library` still depend on opus-grade reasoning. |
+| Raven | opus | Product conversation and `/ax-library` still depend on opus-grade reasoning. |
 | Solomon | opus | Signal-triage quality is eval-backed at opus. |
 | Conan | sonnet | Grading and surgery planning follow explicit rubrics. |
 | Sam | sonnet | Card creation and fixes are execution-heavy. |
@@ -86,7 +86,7 @@ Load these on demand when a job requires them.
 | Source Templates | `${CLAUDE_PLUGIN_ROOT}/skills/solomon/source-templates.md` | Source material + triage report formats (Job 1, Steps 6-8) |
 | Queue Resolution | `${CLAUDE_PLUGIN_ROOT}/skills/solomon/queue-resolution.md` | Queue lifecycle: pre-check, echoes, resolution (Job 1, Steps 1, 4, 7) |
 | Signal Queue Schema | `${CLAUDE_PLUGIN_ROOT}/skills/solomon/signal-queue-schema.md` | Signal queue JSONL format (Job 1, Step 7) |
-| Traversal | `${CLAUDE_PLUGIN_ROOT}/skills/context-briefing/traversal.md` | General graph navigation (Job 1) |
+| Traversal | `${CLAUDE_PLUGIN_ROOT}/skills/ax-brief/traversal.md` | General graph navigation (Job 1) |
 
 ### Tension Pre-Screening Tool
 

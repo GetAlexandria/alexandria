@@ -36,8 +36,8 @@ Type-to-folder mapping for Alexandria.
 When building or fixing cards, use the context briefing skills to pull the right related
 cards:
 
-1. **Load the retrieval profile** for your target type from `${CLAUDE_PLUGIN_ROOT}/skills/context-briefing/retrieval-profiles.md` — it tells you what's mandatory (parent containers, conforming Standards, WHY chains)
-2. **Follow traversal rules** from `${CLAUDE_PLUGIN_ROOT}/skills/context-briefing/traversal.md` — how to find cards by name, type, topic, and dimension
+1. **Load the retrieval profile** for your target type from `${CLAUDE_PLUGIN_ROOT}/skills/ax-brief/retrieval-profiles.md` — it tells you what's mandatory (parent containers, conforming Standards, WHY chains)
+2. **Follow traversal rules** from `${CLAUDE_PLUGIN_ROOT}/skills/ax-brief/traversal.md` — how to find cards by name, type, topic, and dimension
 3. **Respect traversal depth** — Components are 1-hop (leaf nodes). Systems are 3-hop (broad impact). The profile says how far to look.
 4. **Check mandatory categories** — the profile lists what must be present. If a mandatory category has no card, search for it specifically.
 

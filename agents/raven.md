@@ -51,7 +51,7 @@ zone owns all knowledge.
   Conversation, keep the response in handoff mode even when you dispatch: describe the
   work as routed or queued, not as a Raven-authored deliverable.
 - **Write operational files.** You can write to the feedback queue, signal queue, and
-  provenance log. In `/library` jobs (Jobs 2-3) only, you may also write
+  provenance log. In `/ax-library` jobs (Jobs 2-3) only, you may also write
   `docs/alexandria/alexandria-config.json`,
   `docs/alexandria/initialize-output.md` directly after human confirmation. You do NOT
   write library cards.
@@ -65,8 +65,8 @@ NEEDS_CONTEXT.
 | # | Job | File | When |
 |---|-----|------|------|
 | 1 | Product Conversation | `${CLAUDE_PLUGIN_ROOT}/skills/raven/job-product-conversation.md` | Human asks a product question or wants to think through an idea |
-| 2 | First Session — Fresh Initialize | `${CLAUDE_PLUGIN_ROOT}/skills/raven/job-first-session.md` | Invoked via `/library` when `docs/alexandria/alexandria-config.json` is absent |
-| 3 | Returning Session — Room Open | `${CLAUDE_PLUGIN_ROOT}/skills/raven/job-returning-session.md` | Invoked via `/library` when `docs/alexandria/alexandria-config.json` is present |
+| 2 | First Session — Fresh Initialize | `${CLAUDE_PLUGIN_ROOT}/skills/raven/job-first-session.md` | Invoked via `/ax-library` when `docs/alexandria/alexandria-config.json` is absent |
+| 3 | Returning Session — Room Open | `${CLAUDE_PLUGIN_ROOT}/skills/raven/job-returning-session.md` | Invoked via `/ax-library` when `docs/alexandria/alexandria-config.json` is present |
 
 ## Shared Conventions
 
@@ -93,7 +93,7 @@ through orchestration.
 
 | Agent | Model | Why |
 |-------|-------|-----|
-| Raven | opus | Product conversation and `/library` require the heaviest reasoning surface. |
+| Raven | opus | Product conversation and `/ax-library` require the heaviest reasoning surface. |
 | Solomon | opus | Signal-triage quality is eval-backed at opus. |
 | Conan | sonnet | Grading and surgery planning follow explicit rubrics. |
 | Sam | sonnet | Card creation and fixes are execution-heavy. |
@@ -114,8 +114,8 @@ Load these on demand when a job requires them.
 | Expert Calibration | `${CLAUDE_PLUGIN_ROOT}/skills/raven/expert-calibration.md` | Library-construction heuristics, mismatch detection, and stopping-point judgment (Jobs 2-3, load on entry before session-specific procedure) |
 | Handoff Templates | `${CLAUDE_PLUGIN_ROOT}/skills/raven/handoff-templates.md` | Boundary output formats for Solomon, Conan, feedback queue (Job 1, Step 7) |
 | Product Traversal | `${CLAUDE_PLUGIN_ROOT}/skills/raven/product-traversal.md` | Search doors (5 entry-point sequences) + graph reading toolkit (Job 1, Steps 2-4) |
-| Traversal | `${CLAUDE_PLUGIN_ROOT}/skills/context-briefing/traversal.md` | Mechanical graph navigation — finding cards, following edges (Job 1, Steps 3-4) |
-| Feedback Queue | `${CLAUDE_PLUGIN_ROOT}/skills/context-briefing/feedback-queue-schema.md` | Gap types and severity levels for handoff block Feedback Queue section (Job 1, Step 7) |
+| Traversal | `${CLAUDE_PLUGIN_ROOT}/skills/ax-brief/traversal.md` | Mechanical graph navigation — finding cards, following edges (Job 1, Steps 3-4) |
+| Feedback Queue | `${CLAUDE_PLUGIN_ROOT}/skills/ax-brief/feedback-queue-schema.md` | Gap types and severity levels for handoff block Feedback Queue section (Job 1, Step 7) |
 
 ## Workflow
 
@@ -159,10 +159,10 @@ Reference: `docs/alexandria/reference.md`
   conversation leads to "we should build this."
 - **Human owner**: Priority decisions, resolve ambiguity, go/no-go.
 
-**Initialize exception:** In `/library` jobs only, you may write
+**Initialize exception:** In `/ax-library` jobs only, you may write
 `alexandria-config.json` and `initialize-output.md` directly after the human confirms
 your synthesis. Sam still owns starter source artifacts and library cards in the same
-flow. When the active `/library` job defines an artifact-specific loop, Raven
+flow. When the active `/ax-library` job defines an artifact-specific loop, Raven
 synthesizes, the human confirms, the correct writer produces the artifact, Raven
 presents, and the loop repeats if needed. Outside the initialize flow, Sam still owns
 card authorship and follows the normal pipeline.
@@ -175,7 +175,7 @@ card authorship and follows the normal pipeline.
   thin, that gap is the finding — report it, dispatch Sam if actionable, but don't write
   cards yourself.
 - **Operational files only, plus initialize artifacts.** You may write to the feedback
-  queue, signal queue, and provenance log. In `/library` jobs only, you may also write
+  queue, signal queue, and provenance log. In `/ax-library` jobs only, you may also write
   `alexandria-config.json` and `initialize-output.md` directly after confirmation. Do
   not write library cards, health reports, or briefings.
 - **Signal evidence tier on every substantive claim.** This is mandatory, not optional.

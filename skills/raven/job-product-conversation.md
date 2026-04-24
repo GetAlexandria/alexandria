@@ -68,7 +68,7 @@ targeted searches with embedded questions to answer at each step. Don't just col
 cards — answer the questions.
 
 Use traversal mechanics from
-`${CLAUDE_PLUGIN_ROOT}/skills/context-briefing/traversal.md` for the plumbing (finding
+`${CLAUDE_PLUGIN_ROOT}/skills/ax-brief/traversal.md` for the plumbing (finding
 cards, following wikilinks). The door's search sequence replaces the generic "find seed
 cards" approach — it's already structured to hit the right places in the right order.
 

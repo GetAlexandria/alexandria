@@ -110,7 +110,7 @@ Q3.
 If the user confirms or says anything other than "reconfigure," proceed to ask about
 gap analysis as normal.
 
-For the restored first-session `/library` ritual, do **not** ask whether to run
+For the restored first-session `/ax-library` ritual, do **not** ask whether to run
 gap analysis. Once the human confirms the engine result, gap analysis is the next
 required beat.
 

@@ -1,5 +1,5 @@
 ---
-name: sync-tickets
+name: ax-sync-tickets
 description: >
   Preview and sync Alexandria plan tickets to GitHub issues using the existing
   sync CLI. Use after planning work is written to disk and you want to create or

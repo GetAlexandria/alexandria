@@ -3,6 +3,18 @@
 All notable changes to Alexandria are documented in this file.
 Format follows [Keep a Changelog](https://keepachangelog.com/).
 
+## [0.10.0] — 2026-04-24
+
+### Changed
+- **Breaking:** All user-invocable slash commands now use the `ax-` prefix. `/alexandria:library` → `/ax-library`, `/alexandria:plan` → `/ax-plan`, `/alexandria:brief` → `/ax-brief`, `/alexandria:sync-tickets` → `/ax-sync-tickets`, `/alexandria:upgrade` → `/ax-upgrade`.
+- Four previously top-level skills (`revise-plan`, `complete-plan`, `implementation-planning`, `context-briefing`) now ship as part of the bundled plugin payload, so external users get the full planning surface. `/ax-revise-plan` and `/ax-complete-plan` are now first-class user commands.
+- `implementation-planning` renamed to `ax-plan`; `context-briefing` renamed to `ax-brief`.
+- Agent resource packs (conan, raven, sam, solomon, initialize) keep their bare names — they are not user-invocable slash commands.
+
+### Migration
+- Update muscle memory or scripts referencing `/alexandria:*` to the `/ax-*` equivalents.
+- Run `/ax-upgrade` (or `ax update`) to pull the new plugin payload.
+
 ## [0.9.4] — 2026-04-23
 
 ### Added

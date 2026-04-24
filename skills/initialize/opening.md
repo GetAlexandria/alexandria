@@ -12,7 +12,7 @@ itself, not an intake form. By the time Raven asks her first product question, t
 user should already understand what they're building together and have chosen to
 build it.
 
-For the restored first-session `/library` ritual, this opening also carries two
+For the restored first-session `/ax-library` ritual, this opening also carries two
 first-beat responsibilities before any scan happens:
 
 1. Briefly introduce the team around Raven:

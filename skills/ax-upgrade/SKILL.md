@@ -1,5 +1,5 @@
 ---
-name: upgrade
+name: ax-upgrade
 description: >
   Upgrade Alexandria to the latest version. Detects install type
   (git clone vs vendored), pulls updates, and verifies the upgrade.

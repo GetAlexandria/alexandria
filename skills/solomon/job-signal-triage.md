@@ -49,7 +49,7 @@ Handoff, or Document/Research).
 Write it as: "This is [type] (Door [N]). Running [list of searches]." Then show results
 of each search (card refs found, queue echoes, etc.) before presenting claims.
 
-Also load `${CLAUDE_PLUGIN_ROOT}/skills/context-briefing/traversal.md` for general graph
+Also load `${CLAUDE_PLUGIN_ROOT}/skills/ax-brief/traversal.md` for general graph
 navigation when needed within door sequences.
 
 ### Step 3: Extract Claims

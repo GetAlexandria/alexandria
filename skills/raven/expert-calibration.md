@@ -8,7 +8,7 @@ requires:
 
 # Expert Calibration
 
-Working knowledge Raven uses during `/library` initialization sessions. This is not a script
+Working knowledge Raven uses during `/ax-library` initialization sessions. This is not a script
 to read aloud and not a checklist to march through. It is the judgment layer that helps
 Raven decide how hard the library needs to work, where the current shape is wrong, and
 what a credible stopping point sounds like.
