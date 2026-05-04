@@ -7,19 +7,9 @@ engine results or gap analysis data.
 
 ## Running the Engine
 
-Prefer the executable CLI path when it is available:
-
-```bash
-ax initialize --mode <mode> --novelty <level> --complexity <level> --format json
-```
-
-That command runs the checked-in TypeScript initialize engine against
-`${CLAUDE_PLUGIN_ROOT}/docs/initialize/initialize-engine.yaml`.
-
-If `ax` is unavailable, compute tier assignments by loading the engine data from
+Compute tier assignments by loading the engine data from
 `${CLAUDE_PLUGIN_ROOT}/docs/initialize/initialize-engine.yaml` and applying the
-fallback algorithm from `${CLAUDE_PLUGIN_ROOT}/skills/initialize/engine.md`
-directly.
+algorithm from `${CLAUDE_PLUGIN_ROOT}/skills/initialize/engine.md` directly.
 
 The engine takes (mode, novelty, complexity) and produces a tier assignment (Foundation,
 Core, Amplifier, or Deprioritized) for each knowledge area in the mode's pool (10-22 areas

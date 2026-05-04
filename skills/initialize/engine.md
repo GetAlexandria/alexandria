@@ -10,10 +10,7 @@ requires:
 
 This file contains the complete algorithm for computing tier assignments from initialize inputs.
 All data tables are in `${CLAUDE_PLUGIN_ROOT}/docs/initialize/initialize-engine.yaml`.
-The executable source of truth for the deterministic portions of this engine lives in
-the Alexandria CLI (`ax initialize`) and the checked-in TypeScript initialize engine.
-When `ax` is available, prefer that execution path. Use this document as the exact
-fallback mirror when shelling out is unavailable.
+Apply this algorithm directly against the YAML tables to produce tier assignments.
 
 ## Inputs
 

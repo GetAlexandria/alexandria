@@ -3,6 +3,27 @@
 All notable changes to Alexandria are documented in this file.
 Format follows [Keep a Changelog](https://keepachangelog.com/).
 
+## [0.11.0] — 2026-05-04
+
+### Added
+- `ax cards list` now inventories Alexandria library cards with table and JSON
+  output.
+- `ax cards list --summary` now reports card counts by type and layer.
+- `ax cards list --type`, `--layer`, and `--area` now filter card inventory
+  output. Type and layer filters are case-insensitive.
+- `ax config show` now prints the active Alexandria configuration, with JSON and
+  summary output modes.
+
+### Changed
+- Card inventory output now includes parsed frontmatter metadata needed for area
+  filtering.
+- Manifest dissolution planning docs now keep `area` as the transitional
+  coverage field and defer Sam-authored area population to a later slice.
+
+### Removed
+- The retired `ax initialize` CLI subcommand has been removed from the public
+  command surface.
+
 ## [0.10.0] — 2026-04-24
 
 ### Changed

@@ -291,13 +291,8 @@ Load `${CLAUDE_PLUGIN_ROOT}/skills/initialize/engine.md` and
 
 Run the Wizard Configuration Engine as soon as the configuration gate is passed.
 
-If Bash is available and `ax` is installed, prefer:
-
-`ax initialize --mode <mode> --novelty <level> --complexity <level> --format json`
-
-Use that result as the deterministic engine output. If `ax` is unavailable,
-apply the checked-in fallback algorithm directly from `engine.md` and
-`docs/initialize/initialize-engine.yaml`.
+Apply the algorithm from `engine.md` directly against
+`docs/initialize/initialize-engine.yaml` to compute the tier assignment.
 
 After the engine result lands:
 
