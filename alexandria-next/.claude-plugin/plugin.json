@@ -1,0 +1,18 @@
+{
+  "name": "alexandria-next",
+  "version": "1.0.0",
+  "description": "A knowledge graph for your product. Five specialized agents plus deterministic CLI tooling keep your codebase aligned with product intent.",
+  "author": {
+    "name": "SocioTechnica",
+    "url": "https://sociotechnica.org"
+  },
+  "repository": "https://github.com/GetAlexandria/alexandria",
+  "license": "MIT",
+  "keywords": [
+    "alexandria",
+    "alexandria-next",
+    "knowledge-graph",
+    "product-knowledge",
+    "playbook"
+  ]
+}

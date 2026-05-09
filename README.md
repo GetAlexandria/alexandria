@@ -24,6 +24,14 @@ That installer:
   when run inside a Git repo
 - falls back to a user install outside a repo
 
+Alexandria Next can be installed alongside Alexandria:
+
+```bash
+curl -fsSL https://getalexandria.ai/install-next.sh | bash
+```
+
+That installer installs the `alexandria-next` plugin payload and the `ax2` CLI.
+
 If `ax` is already installed, you can run setup directly:
 
 ```bash

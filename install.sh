@@ -238,7 +238,7 @@ register_plugin() {
 		warn "Claude Code CLI not found — skipping plugin registration."
 		warn "Register manually later with:"
 		warn "  claude plugin marketplace add $plugin_target --scope $scope"
-		warn "  claude plugin install alexandria@getalexandria --scope $scope"
+		warn "  claude plugin install alexandria@alexandria --scope $scope"
 		return 0
 	fi
 
@@ -247,13 +247,13 @@ register_plugin() {
 	if ! claude plugin marketplace add "$plugin_target" --scope "$scope" 2>/dev/null; then
 		warn "Marketplace registration failed — register manually:"
 		warn "  claude plugin marketplace add $plugin_target --scope $scope"
-		warn "  claude plugin install alexandria@getalexandria --scope $scope"
+		warn "  claude plugin install alexandria@alexandria --scope $scope"
 		return 0
 	fi
 
-	if ! claude plugin install "alexandria@getalexandria" --scope "$scope" 2>/dev/null; then
+	if ! claude plugin install "alexandria@alexandria" --scope "$scope" 2>/dev/null; then
 		warn "Plugin install failed — install manually:"
-		warn "  claude plugin install alexandria@getalexandria --scope $scope"
+		warn "  claude plugin install alexandria@alexandria --scope $scope"
 		return 0
 	fi
 
