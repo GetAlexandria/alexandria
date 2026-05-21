@@ -24,16 +24,44 @@ Default Alexandria workspace path:
 `./docs/alexandria`
 
 The config file is the single source for finding the Alexandria workspace. A
-future deterministic CLI command, provisionally `ax2 init`, should create the
-config file and workspace directory. It should default to the paths above and
-allow parameters for custom workspace paths.
+deterministic CLI command, `ax2 init`, creates the config file and workspace
+directory. It defaults to the paths above and accepts `--workspace` for custom
+workspace paths.
+
+## State Access
+
+Use AX2 commands for Alexandria Next state reads and play-intent writes.
+
+Read the current projected state with:
+
+```bash
+ax2 state get --json
+```
+
+Create a play intent with:
+
+```bash
+ax2 play intent create --play <play-id> --idempotency-key <key> --json
+```
+
+Claim, complete, or fail intents with:
+
+```bash
+ax2 play intent claim --id <intent-id> --claimant <agent-or-session> --idempotency-key <key> --json
+ax2 play intent complete --id <intent-id> --idempotency-key <key> --json
+ax2 play intent fail --id <intent-id> --error <message> --idempotency-key <key> --json
+```
+
+Do not write `events.jsonl`, cursor files, or other Alexandria runtime state
+files directly. AX2 owns validation, idempotency, projection, and runtime
+cursor updates.
 
 ## Behavior
 
 1. Check whether `./.alexandria-next/alexandria-config.json` exists.
 2. If the config exists, say exactly: `Welcome to Alexandria!`
 3. If the config does not exist, initialize the project through deterministic
-   support. The intended command shape is:
+   support:
 
    ```bash
    ax2 init
@@ -45,6 +73,5 @@ allow parameters for custom workspace paths.
    ax2 init --workspace docs/alexandria
    ```
 
-4. Until `ax2 init` exists, do not hand-write the config as if the deterministic
-   init path exists. Say that Alexandria Next is installed but initialization
-   support has not been implemented yet.
+4. After initialization or welcome, inspect projected state with
+   `ax2 state get --json` before deciding whether a play intent needs action.
