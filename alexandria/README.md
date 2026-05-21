@@ -100,7 +100,8 @@ bun install
 
 In that internal repo, `./scripts/setup-dev` installs `shellcheck` and `shfmt`
 when missing, runs product setup, and additionally symlinks top-level
-maintainer `skills/` into `~/.claude/skills/` and `~/.codex/skills/`.
+maintainer `skills/` into `~/.claude/skills/` for Claude and `.agents/skills/`
+for project-local Codex slash commands.
 
 Formatting policy on this repo is intentionally split:
 
