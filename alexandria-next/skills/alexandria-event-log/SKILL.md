@@ -16,7 +16,7 @@ ledger event with:
 
 - `id`: event id in the Alexandria event log
 - `type`: event type, such as `canvas.review.requested` or
-  `play.intent.created`
+  `play.started`
 - `at`: event timestamp
 - `actor`: who or what emitted the event
 - `payload`: event-specific data
@@ -48,8 +48,9 @@ payload shapes programmatically.
 
 - `canvas.review.requested`: inspect the referenced canvas/step context, perform
   the requested review, then write back a useful result when appropriate.
-- `play.intent.created`: inspect the requested play intent and either run the
-  relevant play or ask for clarification if the intent is incomplete.
+- `play.started`, `play.completed`, and `play.failed`: play run lifecycle audit
+  events. Inspect them for status/debug context; do not treat them as requests
+  to start another play.
 - `canvas.step.saved`: context was saved. Do not wake or respond unless another
   event asks for action.
 - `raven.vision.source_attached`: source context changed. Do not draft from

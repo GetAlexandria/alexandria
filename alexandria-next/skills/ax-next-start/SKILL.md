@@ -48,7 +48,6 @@ Register a local wake subscription for the current agent session with:
 
 ```bash
 ax2 inspect subscriptions register --subscription host:claude-code:<name>:reviews --connection host:claude-code:<name> --type canvas.review.requested --json
-ax2 inspect subscriptions register --subscription host:claude-code:<name>:intents --connection host:claude-code:<name> --type play.intent.created --json
 ax2 inspect subscriptions register --subscription host:claude-code:<name>:raven-vision --connection host:claude-code:<name> --type raven.vision.source_attached --type raven.vision.drafting_requested --type raven.vision.slot.approved --type raven.vision.slot.skipped --if-missing --json
 ```
 
