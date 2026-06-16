@@ -22,35 +22,19 @@ That installer:
 - installs the public `ax` binary
 - installs the Alexandria plugin payload into `.claude/plugins/alexandria/`
   when run inside a Git repo
+- installs bundled Fabro orchestration support for local plays
 - falls back to a user install outside a repo
-
-Alexandria Next can be installed alongside Alexandria:
-
-```bash
-curl -fsSL https://getalexandria.ai/install-next.sh | bash
-```
-
-That installer installs the `alexandria-next` plugin payload and the `ax2` CLI.
-
-If `ax` is already installed, you can run setup directly:
-
-```bash
-ax setup
-```
 
 ## What Alexandria Does
 
-Alexandria maintains a product knowledge graph as typed markdown cards. Each
-card captures a concept in five dimensions:
+Alexandria gives Raven a structured way to learn your product, record product
+events, and coordinate local plays through a deterministic CLI. The project
+workspace lives in your repository at `docs/alexandria` by default, with runtime
+configuration in `.alexandria/alexandria-config.json`.
 
-- `WHAT` — standalone definition
-- `WHERE` — relationships to other concepts
-- `WHY` — strategic rationale
-- `WHEN` — implementation status or timeline
-- `HOW` — implementation guidance, examples, and anti-patterns
-
-The graph lives in your repository, so agents can read it, update it, lint it,
-grade it, and use it during real work.
+The current product surface includes Vision onboarding, source intake, an event
+ledger, local wake subscriptions, Fabro-backed plays, and a viewer for reviewing
+project state.
 
 ## Core Surface
 
@@ -62,30 +46,25 @@ ax --help
 
 The public CLI includes:
 
-- `ax setup`
-- `ax lint`
-- `ax grade`
-- `ax dag`
-- `ax health-check`
-- `ax scoreboard`
-- `ax scan`
-- `ax retrieve`
-- `ax sync-issues`
-- `ax tensions`
+- `ax init`
+- `ax start`
+- `ax run`
+- `ax raven`
+- `ax inspect`
+- `ax doctor`
 - `ax version`
-- `ax update-check`
-- `ax viewer`
+- `ax upgrade`
 
 ## In Claude Code
 
-After installation, open the library room:
+After installation, start Alexandria:
 
 ```text
-Run /ax-library to configure a context library for this project
+Run the ax-start skill
 ```
 
-Raven handles the library room. On a first visit, she initializes the library.
-On return visits, she reconstructs the current state and continues from there.
+Raven initializes the project when needed, registers the local event wake
+subscription, and guides Vision one slot at a time.
 
 ## Project Links
 
