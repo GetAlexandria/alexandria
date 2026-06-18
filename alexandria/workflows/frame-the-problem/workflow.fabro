@@ -1,104 +1,42 @@
 // DERIVED RENDERING — projected from brief.md §4 (the move graph) per
-// studio/plays/PROJECTION.md, 2026-06-12. Do not hand-edit play logic
-// here: edits land in the brief and re-derive (Protocol E blocks
-// banking on drift).
+// studio/plays/PROJECTION.md. Do not hand-edit play logic here: edits land
+// in the brief and re-derive (Protocol E blocks banking on drift).
 digraph FrameTheProblem {
     graph [
-        goal="Frame the problem behind a pitched solution: one analysis rendered twice — the problem brief (runtime/problem-brief.md) and the spoken paragraph — built from the conversation transcript, every claim verbatim-traceable.",
-        max_node_visits=12,
-        stall_timeout="2h"
+        goal="Frame the problem(s) the handed-in material is serving — one problem-framing document, co-edited with the director until he approves, every claim earned by a specific past instance, in service of facts and logic rather than the solution.",
+        max_node_visits=30,
+        stall_timeout="2h",
+        default_fidelity="truncate"
     ]
     rankdir=LR
 
     start [shape=Mdiamond, label="Start"]
     exit  [shape=Msquare, label="Exit"]
 
-    locate [
-        label="Locate the thread boundary",
-        prompt="@prompts/locate.md",
+    pre_fill [
+        label="Draft the framing to react to",
+        prompt="@prompts/pre_fill.md",
         backend="acp",
         acp.command=__AX_ACP_COMMAND_JSON__,
         timeout="20m"
     ]
 
-    extract [
-        label="Extract verbatim evidence",
-        prompt="@prompts/extract.md",
-        backend="acp",
-        acp.command=__AX_ACP_COMMAND_JSON__,
-        timeout="30m"
+    review [
+        shape=hexagon,
+        label="React to the draft — give feedback, or approve to finish"
     ]
 
-    frame [
-        label="Frame the problems",
-        prompt="@prompts/frame.md",
-        backend="acp",
-        acp.command=__AX_ACP_COMMAND_JSON__,
-        timeout="40m"
-    ]
-
-    relate [
-        label="Relate the problems",
-        prompt="@prompts/relate.md",
-        backend="acp",
-        acp.command=__AX_ACP_COMMAND_JSON__,
-        timeout="30m"
-    ]
-
-    ground [
-        label="Ground - mechanical checks",
-        prompt="@prompts/ground.md",
-        backend="acp",
-        acp.command=__AX_ACP_COMMAND_JSON__,
-        timeout="30m"
-    ]
-
-    render [
-        label="Render the picture and the spoken paragraph",
-        prompt="@prompts/render.md",
-        backend="acp",
-        acp.command=__AX_ACP_COMMAND_JSON__,
-        timeout="30m"
-    ]
-
-    word_check [
-        shape=parallelogram,
-        label="Word budget check (wc)",
-        script="n=$(wc -w < runtime/spoken-paragraph.md | tr -d ' '); if [ \"$n\" -le 75 ]; then echo \"WORDCOUNT_OK: $n words (ceiling 75)\"; else echo \"WORDCOUNT_OVER: $n words, $((n-75)) over (ceiling 75) - cut a thought, not compress one\"; fi",
-        timeout="5m"
-    ]
-
-    self_check [
-        label="The pause before speaking",
-        prompt="@prompts/self_check.md",
-        backend="acp",
-        acp.command=__AX_ACP_COMMAND_JSON__,
-        timeout="30m"
-    ]
-
-    cold_reader [
-        label="Cold-reader comprehension gate",
-        prompt="@prompts/cold_reader.md",
+    revise [
+        label="Fold in the director's reaction",
+        prompt="@prompts/revise.md",
         backend="acp",
         acp.command=__AX_ACP_COMMAND_JSON__,
         timeout="20m"
     ]
 
-    start -> locate
-    locate -> extract [label="Proceed", weight=10]
-    locate -> exit    [label="Refuse"]
-    extract -> frame
-    frame -> relate
-    relate -> ground
-    ground -> render  [label="Pass", weight=10]
-    ground -> frame   [label="Fix entries"]
-    ground -> relate  [label="Fix hunch"]
-    render -> word_check
-    word_check -> self_check [condition="command.output contains \"WORDCOUNT_OK\" || context.internal.node_visit_count >= 3"]
-    word_check -> render
-    self_check -> cold_reader [label="Release", weight=10]
-    self_check -> render      [label="Fix voice"]
-    self_check -> frame       [label="Fix brief"]
-    cold_reader -> exit  [label="Done", weight=10]
-    cold_reader -> frame [label="Confused"]
+    start -> pre_fill
+    pre_fill -> review
+    review -> exit   [label="[A] Approve", weight=10]
+    review -> revise [label="[R] Revise", freeform=true, fidelity="compact"]
+    revise -> review
 }
