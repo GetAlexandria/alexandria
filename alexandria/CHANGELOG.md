@@ -3,6 +3,20 @@
 All notable changes to Alexandria are documented in this file.
 Format follows [Keep a Changelog](https://keepachangelog.com/).
 
+## [0.15.2] — 2026-06-19
+
+### Fixed
+- Resolved Railway Claude ACP credentials through Fabro's server vault so
+  managed Frame the Problem runs receive the API key at ACP launch time instead
+  of the unresolved `{{ env.ANTHROPIC_API_KEY }}` template.
+- Upgraded existing managed Fabro settings from the 0.15.1 env placeholder to
+  the vault-backed secret placeholder while preserving local Claude
+  subscription authentication outside Railway.
+
+### Changed
+- Release assets now build the bundled Fabro sidecar from this vendored source
+  tree so Alexandria releases include the ACP credential fix.
+
 ## [0.15.1] — 2026-06-19
 
 ### Fixed
