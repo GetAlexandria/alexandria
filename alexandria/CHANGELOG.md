@@ -3,6 +3,15 @@
 All notable changes to Alexandria are documented in this file.
 Format follows [Keep a Changelog](https://keepachangelog.com/).
 
+## [0.15.0] — 2026-06-19
+
+### Fixed
+- Guarded ACP-backed play moves so `frame-the-problem`, `source-assessment`,
+  and one-pager workflows fail closed instead of advancing to review after an
+  ACP agent failure.
+- Added workflow edge validation and projection test coverage so future shipped
+  ACP workflows keep explicit failure routes.
+
 ## [0.14.1] — 2026-06-19
 
 ### Changed

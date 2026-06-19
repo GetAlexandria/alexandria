@@ -9,7 +9,13 @@ digraph SourceAssessment {
     acp.command=__AX_ACP_COMMAND_JSON__
   ]
   exit [shape=Msquare]
+  acp_failed [
+    shape=parallelogram,
+    label="Fail the run on ACP failure",
+    script="echo \"ACP run failed; refusing to advance the play\" >&2; exit 1"
+  ]
 
   start -> assess
   assess -> exit
+  assess -> acp_failed [label="ACP failed", condition="outcome!=succeeded"]
 }
