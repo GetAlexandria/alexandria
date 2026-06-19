@@ -3,6 +3,13 @@
 All notable changes to Alexandria are documented in this file.
 Format follows [Keep a Changelog](https://keepachangelog.com/).
 
+## [0.15.1] — 2026-06-19
+
+### Fixed
+- Forward `ANTHROPIC_API_KEY` into Claude ACP subprocesses only in Railway
+  product deployments, leaving local Claude subscription authentication
+  unchanged.
+
 ## [0.15.0] — 2026-06-19
 
 ### Fixed
