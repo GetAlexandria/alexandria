@@ -3,6 +3,13 @@
 All notable changes to Alexandria are documented in this file.
 Format follows [Keep a Changelog](https://keepachangelog.com/).
 
+## [0.14.1] — 2026-06-19
+
+### Changed
+- Release asset builds now package the pinned upstream Fabro
+  `0.267.0-nightly.0` GitHub release binary instead of compiling Fabro from the
+  vendored source tree during release.
+
 ## [0.14.0] — 2026-06-19
 
 ### Added
