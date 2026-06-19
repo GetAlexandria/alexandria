@@ -46,4 +46,14 @@ ax inspect subscriptions register \
 	--if-missing \
 	--json >/dev/null 2>&1 || true
 
+ax inspect subscriptions register \
+	--subscription "${connection_id}:frame-the-problem" \
+	--connection "$connection_id" \
+	--type play.requested \
+	--type play.human_input_requested \
+	--type play.human_input_resolved \
+	--type play.completed \
+	--if-missing \
+	--json >/dev/null 2>&1 || true
+
 exec ax internal host claude monitor "$@"

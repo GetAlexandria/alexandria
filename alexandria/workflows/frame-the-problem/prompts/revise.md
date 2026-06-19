@@ -28,10 +28,13 @@ Hold the same discipline as the first draft:
   note the claim still needs a specific time, and tell Raven to ask for one.
 
 Keep the same output shape as the first draft: one `###` entry per distinct
-problem (never fold two distinct problems into one); evidence is the person's
-exact words quoted verbatim, never paraphrased, each marked
-`first-hand` / `assumed / hand-wavey` / `hypothetical`; all three sections always
-present.
+problem (never fold two distinct problems into one); each entry leads with
+`progress sought:` — the struggle someone has, the progress they are trying to
+make and what blocks them, never a risk to the undertaking ("untested,"
+"unproven," "no one has built X" are thin spots on a claim, not problems);
+evidence is the person's exact words quoted verbatim, never paraphrased, each
+marked `first-hand` / `assumed / hand-wavey` / `hypothetical`; all three sections
+always present.
 
 Bump the `status:` version (v2, v3, …). Rewrite `runtime/problem-framing.md`
 complete — the whole current truth, not a diff. Then rewrite

@@ -49,6 +49,7 @@ Register a local wake subscription for the current agent session with:
 ```bash
 ax inspect subscriptions register --subscription host:claude-code:<name>:reviews --connection host:claude-code:<name> --type canvas.review.requested --json
 ax inspect subscriptions register --subscription host:claude-code:<name>:raven-vision --connection host:claude-code:<name> --type raven.vision.source_attached --type raven.vision.drafting_requested --type raven.vision.slot.approved --type raven.vision.slot.skipped --if-missing --json
+ax inspect subscriptions register --subscription host:claude-code:<name>:frame-the-problem --connection host:claude-code:<name> --type play.requested --type play.human_input_requested --type play.human_input_resolved --type play.completed --if-missing --json
 ```
 
 Each subscription is an event match rule attached to a connection. A Claude Code
@@ -180,9 +181,12 @@ If Vision is banked, end with:
 1. Check whether `./.alexandria/alexandria-config.json` exists.
 2. If the config exists, do not announce a technical status yet. Continue the
    setup checks, then deliver the Raven greeting from the Voice section.
-3. Register the Raven Vision wake subscription for the current Claude Code
-   connection. Use `${ALEXANDRIA_CLAUDE_CONNECTION_ID}` when it is set;
-   otherwise use `host:claude-code:default`.
+3. Register the Raven Vision and play-lifecycle (`play.requested`,
+   `play.human_input_requested`, `play.human_input_resolved`, `play.completed`)
+   wake subscriptions for the current Claude Code connection. Use
+   `${ALEXANDRIA_CLAUDE_CONNECTION_ID}` when it is set; otherwise use
+   `host:claude-code:default`. The plugin monitor (`claude-monitor.sh`) also
+   registers these with `--if-missing`, so this is idempotent.
 4. If the config does not exist, initialize the project through deterministic
    support:
 

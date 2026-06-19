@@ -20,6 +20,17 @@ solution**. Stay genuinely open: the framing may end up supporting his solution,
 complicating it, or undercutting it. The solution is a hypothesis on the table to
 be tested — never an enemy to dissolve, never a conclusion to rationalize.
 
+**What a problem is.** A problem is a struggle someone has — the progress they are
+trying to make and what blocks them in the moment it bites. That is what you hunt
+for underneath the material: the human need the solution would serve. It is **not**
+a gap in the material's own case for itself. "This hasn't been tested," "no one
+has built X yet," "the integration is unproven," "the claim rests on analogy" are
+thin spots on a claim — you record those below, under the claim they weaken — they
+are never problem entries of their own. If your list reads as risks to the
+*undertaking* rather than struggles real people have, you have audited the
+material instead of framing the problem: go back to who is trying to do what, and
+what stops them.
+
 Write the framing to a **file**, using your file-writing tool — do not put the
 document in your reply. Create the `runtime/` directory if it does not exist,
 then write `runtime/problem-framing.md` with exactly this shape:
@@ -33,7 +44,8 @@ One `###` entry per **distinct** problem — never fold two distinct problems in
 one entry. (If two are genuinely the same problem, make them one entry and say
 why.) Recover every distinct problem in the material; do not drop one to keep the
 list short. For each:
-### [a title in the director's own voice]
+### [the problem in the director's own voice — what someone is trying to do and can't]
+- progress sought: [what the person is trying to get done and what blocks them in the moment — the human struggle underneath, never a restatement of the solution or a risk to the project]
 - who has it, and the circumstance where it bites
 - evidence: [each item is the person's **exact words, quoted verbatim** from the material — copy them, never paraphrase or summarize — and marked `first-hand: a specific past instance` | `assumed / hand-wavey` | `hypothetical`. A future fear ("if X happens…") is its own `hypothetical` item, listed separately, never merged into a first-hand instance.]
 - thin spot: [the claim that still needs a specific past instance before it can be trusted]

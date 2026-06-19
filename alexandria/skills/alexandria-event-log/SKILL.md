@@ -48,9 +48,22 @@ payload shapes programmatically.
 
 - `canvas.review.requested`: inspect the referenced canvas/step context, perform
   the requested review, then write back a useful result when appropriate.
-- `play.started`, `play.completed`, and `play.failed`: play run lifecycle audit
-  events. Inspect them for status/debug context; do not treat them as requests
-  to start another play.
+- `play.requested`: the director asked to start a play (e.g. clicked **Frame a
+  Problem** on the coin). For `frame-the-problem`, use the `frame-the-problem`
+  skill: confirm you're connected, elicit the material, and launch the play.
+- `play.human_input_requested`: a running play suspended at a human gate and
+  needs the director. For `frame-the-problem`, use the `frame-the-problem` skill
+  to read the draft, riff with the director, then answer the exact
+  `(fabroRunId, questionId)` with `ax raven answer` once he agrees. Never
+  self-answer a gate.
+- `play.human_input_resolved`: a pending gate was answered (by you or elsewhere).
+  Clear that ask from your tracked set; do not re-answer it. This is not a
+  request to start a new play.
+- `play.started`, `play.completed`, `play.failed`, and `play.status_observed`:
+  play run lifecycle events. Inspect them for status/debug context; do not treat
+  a `started`/`completed`/`failed` echo as a request to start another play. For a
+  `frame-the-problem` `play.completed`, use the `frame-the-problem` skill to
+  present the finished framing for the director to ratify or loop (no auto-bank).
 - `canvas.step.saved`: context was saved. Do not wake or respond unless another
   event asks for action.
 - `raven.vision.source_attached`: source context changed. Do not draft from
