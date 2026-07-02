@@ -1,0 +1,18 @@
+{
+  "playId": "quarantine",
+  "legs": [
+    {
+      "nodeId": "quarantine",
+      "label": "Quarantine",
+      "description": "Copy inherited material into quarantine with provenance and no rulebook mutation.",
+      "lead": "Foreign material is sequestered as data, not adopted as a rule.",
+      "beats": [
+        "Hashes the incoming material.",
+        "Writes a quarantined copy with a provenance header.",
+        "Appends the typed quarantine event."
+      ],
+      "typicalSeconds": 30,
+      "kind": "command"
+    }
+  ]
+}

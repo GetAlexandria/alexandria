@@ -1,0 +1,21 @@
+digraph Deprecate {
+  // Fixture inputs: __AX_INPUT_TARGET__ __AX_INPUT_RULE__ __AX_INPUT_REASON__ __AX_INPUT_DISPOSITION__ __AX_INPUT_TRIGGER_KIND__
+  graph [goal="Record a Director-gated Studio Operations deprecation through AX and the Ledger."]
+
+  start [shape=Mdiamond, label="Start"]
+  gate [
+    shape=hexagon,
+    label="Director gate"
+  ]
+  deprecate [
+    shape=parallelogram,
+    label="Deprecate rule",
+    script="echo \"Deprecate runs deterministically through ax run deprecate after Director approval.\""
+  ]
+  exit [shape=Msquare, label="Exit"]
+
+  start -> gate
+  gate -> deprecate [label="approve"]
+  gate -> exit [label="decline"]
+  deprecate -> exit
+}

@@ -1,0 +1,124 @@
+{
+  "playId": "front-of-house-walk",
+  "legs": [
+    {
+      "nodeId": "prepare_agenda",
+      "label": "Prepare the Stage-2 agenda",
+      "description": "Project the EL2 threads into a stable agenda for Raven.",
+      "lead": "AX turns threads.json into the agenda the walk will exhaust.",
+      "beats": [
+        "Reads threads.json from the bundle.",
+        "Writes runtime/front-of-house/agenda.json with stable item ids.",
+        "Stages the first item for Raven without asking the director at launch."
+      ],
+      "typicalSeconds": 5,
+      "kind": "command"
+    },
+    {
+      "nodeId": "stage_next",
+      "label": "Stage the next unresolved agenda item",
+      "description": "Pick the next agenda item not yet answered or residualed and write it for Raven.",
+      "lead": "AX walks the agenda in order, skipping items already answered or carried as residual.",
+      "beats": [
+        "Reads the agenda and this run's answer and residual Ledger events.",
+        "Writes the next unresolved item to current-item.json, current-item.md, and for-raven.md.",
+        "Reports AGENDA_DONE once every item is answered or residualed."
+      ],
+      "typicalSeconds": 5,
+      "kind": "command"
+    },
+    {
+      "nodeId": "director_review",
+      "label": "Review the current Front-of-House turn through Raven",
+      "description": "On the first frame-origin wake, Raven opens with the product headline map plus search-frame confirmation; later wakes mediate one agenda item.",
+      "lead": "The run waits; Raven turns the staged artifact into a director-facing comprehension check.",
+      "beats": [
+        "Raven banks the staged turn as an agent Ledger event before speaking.",
+        "For the frame-origin first wake, Raven presents the Product Containers headline as thesis, major pieces, drift, and search-frame confirmation.",
+        "For later wakes, Raven mediates the current item and evidence refs at section/shape altitude.",
+        "The director's agreed answer returns through ax raven answer and is banked as actor.kind=user."
+      ],
+      "typicalSeconds": 300,
+      "kind": "human"
+    },
+    {
+      "nodeId": "plan_bundle_patch",
+      "label": "Plan the director-backed bundle patch",
+      "description": "Convert the director answer into a narrow patch file that AX can validate.",
+      "lead": "The agent drafts structure changes only; AX owns the actual write.",
+      "beats": [
+        "Reads the answer receipt and current agenda item.",
+        "Drafts a patch that cites the user answer event id.",
+        "Limits edits to names, context, plane, status, and relationships."
+      ],
+      "typicalSeconds": 90,
+      "kind": "agent"
+    },
+    {
+      "nodeId": "apply_bundle_patch",
+      "label": "Validate or reject the bundle patch",
+      "description": "Classify the planned patch as applied or rejected, appending accepted patches to the draft log when one is bound.",
+      "lead": "AX enforces provenance and the Small-floor frontmatter boundary, then emits a routing marker.",
+      "beats": [
+        "Rejects patches without a matching actor.kind=user answer event.",
+        "Preserves card bodies and required Small-floor fields.",
+        "Appends accepted patches to the draft log when bound, otherwise mutates bundle cards.",
+        "Appends a bundle_patch_applied event for accepted patches or writes a patch-rejection diagnostic."
+      ],
+      "typicalSeconds": 5,
+      "kind": "command"
+    },
+    {
+      "nodeId": "replan_bundle_patch",
+      "label": "Replan the rejected bundle patch once",
+      "description": "Give the agent one repair turn with AX's exact validation error.",
+      "lead": "The agent corrects the patch, not the director answer.",
+      "beats": [
+        "Reads runtime/front-of-house/patch-rejection.json.",
+        "Uses the exact validation error as the repair target.",
+        "Writes a replacement patch for the same agenda item and answer event."
+      ],
+      "typicalSeconds": 90,
+      "kind": "agent"
+    },
+    {
+      "nodeId": "apply_replanned_bundle_patch",
+      "label": "Validate or reject the replanned bundle patch",
+      "description": "Append or apply the repaired patch, or classify the second rejection.",
+      "lead": "A second patch rejection no longer strands the rest of the agenda.",
+      "beats": [
+        "Appends valid repaired patches to the draft log when bound, otherwise applies them to bundle cards.",
+        "Writes a fresh patch-rejection diagnostic for invalid repaired patches.",
+        "Routes second rejection to residual accounting instead of another replan."
+      ],
+      "typicalSeconds": 5,
+      "kind": "command"
+    },
+    {
+      "nodeId": "record_patch_rejection_residual",
+      "label": "Record rejected patch as residual",
+      "description": "Carry an item whose patch failed twice into the existing residual-gap path.",
+      "lead": "The walk keeps moving while preserving the failed validation reason.",
+      "beats": [
+        "Reads the current item and patch-rejection diagnostic.",
+        "Appends library.front_of_house.residual_gap_recorded with a patch rejected reason.",
+        "Allows stage-next to continue to later agenda items."
+      ],
+      "typicalSeconds": 5,
+      "kind": "command"
+    },
+    {
+      "nodeId": "finalize_accounting",
+      "label": "Finalize residual-gap accounting",
+      "description": "Write RESIDUAL-GAPS.md for every agenda item not answered or explicitly residualed.",
+      "lead": "Nothing disappears: every unanswered item is carried forward.",
+      "beats": [
+        "Compares the full agenda with answer and residual Ledger events.",
+        "Appends residual_gap_recorded events for unanswered items.",
+        "Writes RESIDUAL-GAPS.md."
+      ],
+      "typicalSeconds": 5,
+      "kind": "command"
+    }
+  ]
+}

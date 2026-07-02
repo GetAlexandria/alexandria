@@ -1,0 +1,18 @@
+{
+  "playId": "capture",
+  "legs": [
+    {
+      "nodeId": "capture",
+      "label": "Capture",
+      "description": "Append a capture disposition and refresh the autopsy projection.",
+      "lead": "A surfaced learning becomes a provenance-stamped record or a flagged non-learning.",
+      "beats": [
+        "Checks the source material for substantiation.",
+        "Appends the typed capture event.",
+        "Refreshes the autopsy projection without changing active rules."
+      ],
+      "typicalSeconds": 30,
+      "kind": "command"
+    }
+  ]
+}

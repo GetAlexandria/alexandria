@@ -68,14 +68,9 @@ the new source and wait until the director is ready to draft.
 
    | Slot id | Peg file |
    | --- | --- |
-   | `shift` | `${CLAUDE_PLUGIN_ROOT}/skills/raven-vision-drafting/references/slots/shift.md` |
    | `person` | `${CLAUDE_PLUGIN_ROOT}/skills/raven-vision-drafting/references/slots/person.md` |
-   | `named-pain` | `${CLAUDE_PLUGIN_ROOT}/skills/raven-vision-drafting/references/slots/named-pain.md` |
-   | `discovered-pain` | `${CLAUDE_PLUGIN_ROOT}/skills/raven-vision-drafting/references/slots/discovered-pain.md` |
-   | `inadequacy` | `${CLAUDE_PLUGIN_ROOT}/skills/raven-vision-drafting/references/slots/inadequacy.md` |
    | `mechanism` | `${CLAUDE_PLUGIN_ROOT}/skills/raven-vision-drafting/references/slots/mechanism.md` |
-   | `felt-experience` | `${CLAUDE_PLUGIN_ROOT}/skills/raven-vision-drafting/references/slots/felt-experience.md` |
-   | `proof` | `${CLAUDE_PLUGIN_ROOT}/skills/raven-vision-drafting/references/slots/proof.md` |
+   | `the-work` | `${CLAUDE_PLUGIN_ROOT}/skills/raven-vision-drafting/references/slots/the-work.md` |
    | `refusal` | `${CLAUDE_PLUGIN_ROOT}/skills/raven-vision-drafting/references/slots/refusal.md` |
 
 If no source items exist, do not draft. Tell the director that Raven needs at
@@ -191,19 +186,14 @@ proceed only according to the current drafting trigger rules.
 
 ## Slot Map
 
-AX uses descriptive slot ids instead of the prototype's numeric ids:
+The Basic Product Description asks for four slots, in plain language:
 
-| AX slot id | Prototype slot | Target |
+| AX slot id | Slot | Target |
 | --- | --- | --- |
-| `shift` | `1` | 1 paragraph |
-| `person` | `2` | 1 short paragraph |
-| `named-pain` | `3a` | 1 paragraph, person's voice |
-| `discovered-pain` | `3b` | 1 paragraph |
-| `inadequacy` | `4` | 3-5 bullet points |
-| `mechanism` | `5` | 1 positioning sentence plus 2-3 sentences |
-| `felt-experience` | `6` | Story, 250-400 words |
-| `proof` | `7` | 2-3 markers |
-| `refusal` | `8` | 2-3 anti-positions |
+| `person` | The Person | A short paragraph |
+| `mechanism` | The Mechanism | One or two sentences |
+| `the-work` | The Work | A short, ordered walk-through |
+| `refusal` | What It's Not | Two or three, each with its reason |
 
 ## Closing Message
 

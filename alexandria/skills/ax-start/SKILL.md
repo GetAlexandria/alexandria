@@ -186,7 +186,12 @@ If Vision is banked, end with:
    wake subscriptions for the current Claude Code connection. Use
    `${ALEXANDRIA_CLAUDE_CONNECTION_ID}` when it is set; otherwise use
    `host:claude-code:default`. The plugin monitor (`claude-monitor.sh`) also
-   registers these with `--if-missing`, so this is idempotent.
+   registers these with `--if-missing`, so this is idempotent. Front-of-house
+   EL3 wakes use the same play-lifecycle subscription; route
+   `playId = front-of-house-walk` human-input wakes to the
+   `front-of-house-walk` skill. Route explicit EL4 bundle confirmation work,
+   `library.confirmed`, and `library.confirmation_rejected` events to the
+   `empty-library-confirm` skill.
 4. If the config does not exist, initialize the project through deterministic
    support:
 

@@ -55,7 +55,10 @@ payload shapes programmatically.
   needs the director. For `frame-the-problem`, use the `frame-the-problem` skill
   to read the draft, riff with the director, then answer the exact
   `(fabroRunId, questionId)` with `ax raven answer` once he agrees. Never
-  self-answer a gate.
+  self-answer a gate. For `front-of-house-walk`, use the
+  `front-of-house-walk` skill: record Raven's presented turn, riff the current
+  Stage-2 question or Hot Spot with the director, and answer with
+  `ax raven answer --bundle <bundle>`.
 - `play.human_input_resolved`: a pending gate was answered (by you or elsewhere).
   Clear that ask from your tracked set; do not re-answer it. This is not a
   request to start a new play.
@@ -86,6 +89,19 @@ payload shapes programmatically.
 - `raven.vision.banked`: Vision is banked into Raven's Knowledge Bank. Treat the
   banked Source of Truth as context only; do not generate Library cards from this
   event.
+- `library.front_of_house.turn_recorded`,
+  `library.front_of_house.answer_recorded`,
+  `library.front_of_house.bundle_patch_applied`, and
+  `library.front_of_house.residual_gap_recorded`: EL3 audit/provenance events.
+  Use them to verify director-answer provenance and residual-gap accounting.
+  They are not wake requests and should not start another play.
+- `library.confirmed`: EL4 durable approval. Treat it as the only approval fact
+  when `actor.kind = user` and product, bundle path, and library version match.
+  Do not create a second approval flag or broaden the approval to a later
+  version.
+- `library.confirmation_rejected`: EL4 rejection/edit list. This is not an
+  approval. Use the `empty-library-confirm` skill to interpret it, then route
+  the edit list back to `front-of-house-walk`.
 
 ## Writing Back
 

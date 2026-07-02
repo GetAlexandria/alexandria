@@ -1,0 +1,31 @@
+{
+  "playId": "deprecate",
+  "legs": [
+    {
+      "nodeId": "gate",
+      "label": "Gate",
+      "description": "Require Director approval before a load-bearing rule is removed.",
+      "lead": "Rulebook edits wait for the Director.",
+      "beats": [
+        "Presents the deprecation as an approval gate.",
+        "Decline leaves the rulebook untouched.",
+        "Approval permits the ledger-backed edit."
+      ],
+      "typicalSeconds": 30,
+      "kind": "human"
+    },
+    {
+      "nodeId": "deprecate",
+      "label": "Deprecate",
+      "description": "Append a deprecate ruling and apply the approved rule edit.",
+      "lead": "The stale rule is retired with provenance.",
+      "beats": [
+        "Appends the typed deprecate event.",
+        "Refreshes the disposition projection.",
+        "Removes only the approved rule text."
+      ],
+      "typicalSeconds": 30,
+      "kind": "command"
+    }
+  ]
+}

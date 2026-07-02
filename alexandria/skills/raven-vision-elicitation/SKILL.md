@@ -50,14 +50,9 @@ Before giving substantive advice about a slot, read the pegs.
 
    | Slot id | Peg file |
    | --- | --- |
-   | `shift` | `${CLAUDE_PLUGIN_ROOT}/skills/raven-vision-drafting/references/slots/shift.md` |
    | `person` | `${CLAUDE_PLUGIN_ROOT}/skills/raven-vision-drafting/references/slots/person.md` |
-   | `named-pain` | `${CLAUDE_PLUGIN_ROOT}/skills/raven-vision-drafting/references/slots/named-pain.md` |
-   | `discovered-pain` | `${CLAUDE_PLUGIN_ROOT}/skills/raven-vision-drafting/references/slots/discovered-pain.md` |
-   | `inadequacy` | `${CLAUDE_PLUGIN_ROOT}/skills/raven-vision-drafting/references/slots/inadequacy.md` |
    | `mechanism` | `${CLAUDE_PLUGIN_ROOT}/skills/raven-vision-drafting/references/slots/mechanism.md` |
-   | `felt-experience` | `${CLAUDE_PLUGIN_ROOT}/skills/raven-vision-drafting/references/slots/felt-experience.md` |
-   | `proof` | `${CLAUDE_PLUGIN_ROOT}/skills/raven-vision-drafting/references/slots/proof.md` |
+   | `the-work` | `${CLAUDE_PLUGIN_ROOT}/skills/raven-vision-drafting/references/slots/the-work.md` |
    | `refusal` | `${CLAUDE_PLUGIN_ROOT}/skills/raven-vision-drafting/references/slots/refusal.md` |
 
 If the director asks a question and you do not yet have the pegs in working
@@ -124,15 +119,14 @@ slots.
 
 Common leaks to watch for:
 
-- `shift` drifting into pain. The Shift is an external change in the world; the
-  Problem is what that change produces for the Person.
-- `person` drifting into pain. The Person is who; the Problem is what they feel.
-- `named-pain` slipping into `discovered-pain`. Named Pain is front-door,
-  pre-adoption, in the Person's voice.
-- `inadequacy` becoming a feature comparison. The Inadequacy needs structural
-  failure, not missing features.
-- `mechanism` reading as a tagline. If a stranger cannot predict roadmap and
-  refusal lines from it, it is probably not a mechanism claim.
+- `person` drifting into a market segment. The Person is one concrete person the
+  team could picture, not a demographic.
+- `mechanism` reading as a tagline. If a stranger cannot understand what the
+  product does and what it stands in for, it is probably not a mechanism claim.
+- `the-work` skipping steps. The Work follows the main path from beginning to
+  end, naming what advances each step.
+- `refusal` listing competitors. What It's Not names the look-alikes the product
+  is mistaken for but deliberately does not serve.
 
 When you catch a leak, name where the content belongs, redirect to the current
 slot's job, and re-anchor with the diagnostic test.

@@ -1,0 +1,15 @@
+digraph Quarantine {
+  // Fixture inputs: __AX_INPUT_FOREIGN__ __AX_INPUT_ORIGIN__ __AX_INPUT_TRIGGER_KIND__
+  graph [goal="Sequester inherited Studio material through AX and the Ledger."]
+
+  start [shape=Mdiamond, label="Start"]
+  quarantine [
+    shape=parallelogram,
+    label="Quarantine intake",
+    script="echo \"Quarantine runs deterministically through ax run quarantine.\""
+  ]
+  exit [shape=Msquare, label="Exit"]
+
+  start -> quarantine
+  quarantine -> exit
+}

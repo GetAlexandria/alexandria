@@ -1,0 +1,15 @@
+digraph Capture {
+  // Fixture inputs: __AX_INPUT_SOURCE__ __AX_INPUT_LEARNING__ __AX_INPUT_CLASSIFICATION__ __AX_INPUT_SUBSTANTIATION__ __AX_INPUT_SOURCE_EVENT_ID__ __AX_INPUT_TRIGGER_KIND__
+  graph [goal="Record a Studio Operations capture disposition through AX and the Ledger."]
+
+  start [shape=Mdiamond, label="Start"]
+  capture [
+    shape=parallelogram,
+    label="Capture disposition",
+    script="echo \"Capture runs deterministically through ax run capture.\""
+  ]
+  exit [shape=Msquare, label="Exit"]
+
+  start -> capture
+  capture -> exit
+}
